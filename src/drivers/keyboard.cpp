@@ -22,11 +22,10 @@ void KeyboardDriver::activate(){
 
 uint32_t KeyboardDriver::handleInterrupt(uint32_t esp){
     uint8_t key = dataPort.read();
-   
     
     switch(key){
-    	case 0x2A: case 0x36: shift = true; break;
-	case 0xAA: case 0xB6: shift = false; break;
+    	case 0x2A: case 0x36: shift = true; return esp;
+	case 0xAA: case 0xB6: shift = false; return esp;
     }
     
     if(key < 0x80){
@@ -77,6 +76,7 @@ char KeyboardDriver::getLetter(uint8_t key){
 	case 0x30: return 'b';
 	case 0x31: return 'n';
 	case 0x32: return 'm';
+	case 0x1C: return '\n';
 	default: return '\0';
     }
 }
@@ -93,13 +93,15 @@ char KeyboardDriver::getSignOrNumber(uint8_t key){
 	case 0x09: return shift ? '*' : '8';
 	case 0x0A: return shift ? '(' : '9';
 	case 0x0B: return shift ? ')' : '0';
-			  
+	case 0x0C: return shift ? '_' : '-';
+	case 0x0D: return shift ? '+' : '=';
 	
 	case 0x33: return shift ? '<' : ',';
 	case 0x34: return shift ? '>' : '.';
 	case 0x35: return shift ? '/' : '-';
-		    
-	case 0x1C: return '\n';
+		
+	case 0x01: return 0x01;
+	case 0x0E: return 0x08;
 	case 0x39: return ' ';
 	default: return '\0';
     }

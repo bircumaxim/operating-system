@@ -14,6 +14,7 @@ class KeyboardDriver : public InterruptHandler, public Driver , KeyEventHandler{
 	Port8Bit commandPort;
 	
 	bool shift;
+	
 	char* getChar(uint8_t);
 	char getLetter(uint8_t);
 	char getSignOrNumber(uint8_t);

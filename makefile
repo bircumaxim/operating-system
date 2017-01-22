@@ -4,7 +4,8 @@ LDPARAMS = -melf_i386
 
 objects = bin/obj/main.o \
 	  bin/obj/loader.o \
-	  bin/obj/terminal.o \
+	  bin/obj/shell.o \
+	  bin/obj/cursor.o \
 	  bin/obj/gdt/gdt.o \
 	  bin/obj/event/key_event_handler.o \
 	  bin/obj/event/mouse_event_handler.o \
@@ -24,6 +25,11 @@ objects = bin/obj/main.o \
 	  bin/obj/drivers/vga.o \
 	  bin/obj/std/printf.o \
 	  bin/obj/std/video_memory.o \
+	  bin/obj/apps/app.o \
+	  bin/obj/apps/calculator.o \
+	  bin/obj/apps/writter.o \
+	  bin/obj/apps/paint.o \
+	  
 	  
 	
 bin/obj/%.o: src/%.cpp

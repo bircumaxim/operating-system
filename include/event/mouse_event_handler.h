@@ -7,7 +7,7 @@ class MouseEventHandler {
     protected:	
 	static MouseEventHandler* mouseEventHandlers[256];
 	static int mouseEventHandlersCount;
-
+	
 	virtual void onMouseMove(int8_t x, int8_t y);
 	virtual void onMouseButtonUp(uint8_t button);
 	virtual void onMouseButtonDown(uint8_t button);
