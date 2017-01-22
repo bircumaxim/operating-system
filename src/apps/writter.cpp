@@ -24,10 +24,14 @@ void Writter::onMouseButtonDown(uint8_t button){
 void Writter::onMouseMove(int8_t x, int8_t y){
     if(!isRunning)
 	return;
+    invertBitColor(80 * mousePosY + mousePosX);
+    
     mousePosX = x;
     mousePosY = y;
+    
+    invertBitColor(80 * mousePosY + mousePosX);
 }
 
 char* Writter::getDescription(){
-    return "description";
+    return "   simple text writter";
 }

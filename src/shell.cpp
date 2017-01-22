@@ -25,7 +25,7 @@ void Shell::runCommand(char* command){
 	    printf(apps[i]->getDescription());
 	    printf("\n");
 	}
-	printf(" 'clear' command to clear screen\n\n"); 
+	printf(" 'clear'      command to clear screen\n\n"); 
 	printf("command$ ");    
     } else {
 	 for(int i = 0; i < appsCount; i++){
@@ -34,13 +34,13 @@ void Shell::runCommand(char* command){
 		apps[i]->isRunning = true;
 		apps[i]->run();
 		runningApp = apps[i];
-	    } else {
-		printf("\n\ncommand not found !\n\n");    
-		printf(" 'man' command to learn more\n");    
-		printf(" 'clear' command to clear screen\n\n");    
-		printf("command$ ");    
-	    }
+		return;
+	    } 
 	}
+	printf("\n\ncommand not found !\n\n");    
+	printf(" 'man'   command to learn more\n");    
+	printf(" 'clear' command to clear screen\n\n");    
+	printf("command$ ");    
     }
 }
 	

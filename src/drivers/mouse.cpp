@@ -11,8 +11,6 @@ MouseDriver::MouseDriver(InterruptManager* interruptManager):
     
     offset = 0;
     lastButtonState = 0;
-    
-    invertBitColor(80*12+40);
 }
 
 MouseDriver::~MouseDriver(){}
@@ -42,8 +40,6 @@ uint32_t MouseDriver::handleInterrupt(uint32_t esp){
     offset = (offset + 1) % 3;
     
     if(offset == 0){
-	invertBitColor(80 * posY + posX);
-
 	posX += buffer[1];
 	if(posX < 0) posX = 0;
 	if(posX >= 80) posX = 79;
@@ -51,8 +47,6 @@ uint32_t MouseDriver::handleInterrupt(uint32_t esp){
 	posY -= buffer[2];
 	if(posY < 0) posY = 0;
 	if(posY >= 25) posY = 24;
-	
-	invertBitColor(80 * posY + posX);
 	
 	for(uint8_t i = 0; i < 3; i++){
 	    if((buffer[0] & (0x01 << i)) != (lastButtonState & 0x01 << i)){

@@ -1,4 +1,3 @@
-
 #include <drivers/vga.h>
 
 VideoGraphicsArray::VideoGraphicsArray() : 
@@ -57,8 +56,7 @@ void VideoGraphicsArray::writeRegisters(uint8_t* registers){
     
 }
 
-bool VideoGraphicsArray::supportsMode(uint32_t width, uint32_t height, uint32_t colordepth)
-{
+bool VideoGraphicsArray::supportsMode(uint32_t width, uint32_t height, uint32_t colordepth){
     return width == 320 && height == 200 && colordepth == 8;
 }
 
@@ -109,8 +107,12 @@ void VideoGraphicsArray::putPixel(int32_t x, int32_t y,  uint8_t colorIndex){
     || y < 0 || 200 <= y)
         return;
         
-    uint8_t* pixelAddress = getFrameBufferSegment() + 320*y + x;
+    uint8_t* pixelAddress = getFrameBufferSegment() + 320 * y + x;
     *pixelAddress = colorIndex;
+}
+
+bool VideoGraphicsArray::pixelIsOfColor(int32_t x, int32_t y ,uint8_t r, uint8_t g, uint8_t b){
+    return *(getFrameBufferSegment() + 320 * y + x) == getColorIndex(r, g, b);
 }
 
 uint8_t VideoGraphicsArray::getColorIndex(uint8_t r, uint8_t g, uint8_t b){

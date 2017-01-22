@@ -7,12 +7,16 @@
 
 class Paint : public App , MouseEventHandler{
     private:
+	int32_t mousePosX;
+	int32_t mousePosY;
 	VideoGraphicsArray *vga;
+	bool isHolding;
+	
     protected:
-	int8_t mousePosX;
-	int8_t mousePosY;
-	virtual void onMouseButtonDown(uint8_t button);    
+	virtual void onMouseButtonDown(uint8_t button);
+	virtual void onMouseButtonUp(uint8_t button);
 	virtual void onMouseMove(int8_t x, int8_t y);
+	
     public:
 	virtual void run();
 	virtual char* getDescription();
